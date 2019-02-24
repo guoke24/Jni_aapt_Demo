@@ -57,8 +57,9 @@ JNIEXPORT j{返回值类型} JNICALL Java_{JavaApp包名}_{Java类名}_{Java函�
 ###### mac os 虚拟机环境下，vaapt.so 需要放在 app/src/main/libs/x86_64/ 才会生效
 
 ### extern "C"
-看链接：https://www.cnblogs.com/yuemw/p/7908413.html
-
-C 和 C++ 对函数的处理方式是不同的. extern "C" 是使 C++ 能够调用C写作的库文件的一个手段，
+```
+C 和 C++ 对函数的处理方式是不同的. 
+extern "C" 是使 C++ 能够调用C写作的库文件的一个手段.
 如果要对编译器提示使用C的方式来处理函数的话，那么就要使用extern "C"来说明。
-
+```
+详细看链接：https://www.cnblogs.com/yuemw/p/7908413.html

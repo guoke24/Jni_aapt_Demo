@@ -20,6 +20,28 @@ lunch [对应的项目]
 
 mmm [aapt源码根路径]
 
+
+
+# native层的头文件可以自己写，格式如下：
+```
+#include <jni.h>
+
+#ifndef _Included_com_topwise_jnidemo_MyJni
+#define _Included_com_topwise_jnidemo_MyJni
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+// 在此声明函数
+JNIEXPORT j{返回值类型} JNICALL Java_{JavaApp包名}_{Java类名}_{Java函数名}(JNIEnv *env, jobject jo, ... );
+
+#ifdef __cplusplus
+}
+#endif
+#endif
+```
+
 # 头文件中的这两行定义，不使用可以不加
 ```
 #ifndef _Included_com_topwise_jnidemo_MyJni

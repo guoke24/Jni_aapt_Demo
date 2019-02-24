@@ -19,6 +19,13 @@ lunch [对应的项目]
 
 mmm [aapt源码根路径]
 
+# 头文件中的这两行定义，不使用可以不加
+
+```
+#ifndef _Included_com_topwise_jnidemo_MyJni
+#define _Included_com_topwise_jnidemo_MyJni
+```
+
 # jni路径下的头文件，其实可以去掉，将其声明放到cpp文件即可。
 
 # 若native层的函数命名中的类名不对应，则java层无法调取成功。
@@ -29,3 +36,5 @@ mmm [aapt源码根路径]
 看链接：https://www.cnblogs.com/yuemw/p/7908413.html
 C和C++对函数的处理方式是不同的.extern "C"是使C++能够调用C写作的库文件的一个手段，如果要对编译器提示使用C的方式来处理函数的话，那么就要使用extern "C"来说明。
 
+#ifndef _Included_com_topwise_jnidemo_MyJni
+#define _Included_com_topwise_jnidemo_MyJni

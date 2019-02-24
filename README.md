@@ -20,17 +20,18 @@ lunch [对应的项目]
 mmm [aapt源码根路径]
 
 # 头文件中的这两行定义，不使用可以不加
-
 ```
 #ifndef _Included_com_topwise_jnidemo_MyJni
 #define _Included_com_topwise_jnidemo_MyJni
 ```
 
-# jni路径下的头文件，其实可以去掉，将其声明放到cpp文件即可。
+### jni路径下的头文件，其实可以去掉，将其声明放到cpp文件即可。
 
-# 若native层的函数命名中的类名不对应，则java层无法调取成功。
+### 实现java调用本地函数的文件只能是cpp文件，不能是c文件。
 
-# mac os 虚拟机环境下，vaapt.so 需要放在 app/src/main/libs/x86_64/ 才会生效
+### 若native层的函数命名中的类名不对应，则java层无法调取成功。
+
+### mac os 虚拟机环境下，vaapt.so 需要放在 app/src/main/libs/x86_64/ 才会生效
 
 # extern "C"
 看链接：https://www.cnblogs.com/yuemw/p/7908413.html

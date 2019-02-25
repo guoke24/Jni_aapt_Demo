@@ -41,8 +41,10 @@ int doVersion(Bundle* bundle)
 {
     if (bundle->getFileSpecCount() != 0) {
         printf("(ignoring extra arguments)\n");
+	ALOGD("(ignoring extra arguments)\n");
     }
     printf("Android Asset Packaging Tool, v0.2-" AAPT_VERSION "\n");
+    ALOGD("Android Asset Packaging Tool, v0.2-" AAPT_VERSION "\n");
 
     return 0;
 }
@@ -149,6 +151,7 @@ int doList(Bundle* bundle)
 
     if (bundle->getFileSpecCount() != 1) {
         fprintf(stderr, "ERROR: specify zip file name (only)\n");
+	ALOGD( "ERROR: specify zip file name (only)\n");
         goto bail;
     }
     zipFileName = bundle->getFileSpecEntry(0);
@@ -161,10 +164,10 @@ int doList(Bundle* bundle)
     int count, i;
 
     if (bundle->getVerbose()) {
-        printf("Archive:  %s\n", zipFileName);
-        printf(
+        ALOGD("Archive:  %s\n", zipFileName);
+        ALOGD(
             " Length   Method    Size  Ratio   Offset      Date  Time  CRC-32    Name\n");
-        printf(
+        ALOGD(
             "--------  ------  ------- -----  -------      ----  ----  ------    ----\n");
     }
 
@@ -181,7 +184,7 @@ int doList(Bundle* bundle)
             strftime(dateBuf, sizeof(dateBuf), "%m-%d-%y %H:%M",
                 localtime(&when));
 
-            printf("%8ld  %-7.7s %7ld %3d%%  %8zd  %s  %08lx  %s\n",
+            ALOGD("%8ld  %-7.7s %7ld %3d%%  %8zd  %s  %08lx  %s\n",
                 (long) entry->getUncompressedLen(),
                 compressionName(entry->getCompressionMethod()),
                 (long) entry->getCompressedLen(),
@@ -192,7 +195,7 @@ int doList(Bundle* bundle)
                 entry->getCRC32(),
                 entry->getFileName());
         } else {
-            printf("%s\n", entry->getFileName());
+            ALOGD("%s\n", entry->getFileName());
         }
 
         totalUncLen += entry->getUncompressedLen();
@@ -200,9 +203,9 @@ int doList(Bundle* bundle)
     }
 
     if (bundle->getVerbose()) {
-        printf(
+        ALOGD(
         "--------          -------  ---                            -------\n");
-        printf("%8ld          %7ld  %2d%%                            %d files\n",
+        ALOGD("%8ld          %7ld  %2d%%                            %d files\n",
             totalUncLen,
             totalCompLen,
             calcPercent(totalUncLen, totalCompLen),
@@ -213,6 +216,7 @@ int doList(Bundle* bundle)
         AssetManager assets;
         if (!assets.addAssetPath(String8(zipFileName), NULL)) {
             fprintf(stderr, "ERROR: list -a failed because assets could not be loaded\n");
+	    ALOGD("ERROR: list -a failed because assets could not be loaded\n");
             goto bail;
         }
 
@@ -223,16 +227,16 @@ int doList(Bundle* bundle)
 #endif
         const ResTable& res = assets.getResources(false);
         if (!kHaveAndroidOs) {
-            printf("\nResource table:\n");
+            ALOGD("\nResource table:\n");
             res.print(false);
         }
 
         Asset* manifestAsset = assets.openNonAsset("AndroidManifest.xml",
                                                    Asset::ACCESS_BUFFER);
         if (manifestAsset == NULL) {
-            printf("\nNo AndroidManifest.xml found.\n");
+            ALOGD("\nNo AndroidManifest.xml found.\n");
         } else {
-            printf("\nAndroid manifest:\n");
+            ALOGD("\nAndroid manifest:\n");
             ResXMLTree tree;
             tree.setTo(manifestAsset->getBuffer(true),
                        manifestAsset->getLength());

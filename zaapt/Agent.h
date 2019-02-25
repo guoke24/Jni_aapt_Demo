@@ -28,7 +28,7 @@ JNIEXPORT jstring JNICALL Java_com_topwise_jnidemo_MyJni_send
  * Signature: (Ljava/lang/String;)Ljava/lang/String;
  */
 JNIEXPORT jint JNICALL Java_com_topwise_jnidemo_MyJni_aapt
-  (JNIEnv *, jobject, jstring, jstring);
+  (JNIEnv *, jobject, jstring, jstring, jstring);
 
 #ifdef __cplusplus
 }

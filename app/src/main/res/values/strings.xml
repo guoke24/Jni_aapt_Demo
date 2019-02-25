@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">JNIDEMO</string>
+    <string name="app_name">Jni_aapt</string>
     <string name="please_input_amount">test</string>
     <string name="please_input_order_no">please_input_order_no</string>
     <string name="please_input_admin_password">please_input_admin_password</string>

@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.IllegalFormatCodePointException;
@@ -22,8 +25,31 @@ public class MainActivity extends BaseTestActivity {
         showMessage(MyJni.send("just do it"));
     }
 
+    // aapt remove
+    // 输入名字不够方便
     public void test_2(View c){
-        showMessage("" + AaptCall.aapt("abc.apk","test.png"));
+        String s1 = "/data/user/0/com.topwise.jnidemo/files/sougou.apk";
+        String s2 = "resources.arsc";
+        showMessage("" + AaptCall.aapt(s1,s2,"r"));//传空报错
+    }
+
+    // aapt list
+    public void test_3(View c){
+        String s1 = "/data/user/0/com.topwise.jnidemo/files/sougou.apk";
+        String s2 = "bbb"; // 随便写
+        showMessage("" + AaptCall.aapt(s1,s2,"l"));
+    }
+
+    // aapt version
+    public void test_4(View c){
+        String s1 = "aaa";
+        String s2 = "bbb";
+        showMessage("" + AaptCall.aapt(s1,s2,"v"));
+    }
+
+    // 有空独立成类
+    public void test_gen_apk(View c){
+        AssetsUtils.fileOpt("sougou.apk",this);//生成一个文件到本地先
     }
 
     MessageDigest messageDigest;
@@ -112,5 +138,6 @@ public class MainActivity extends BaseTestActivity {
         }
         return builder.toString();
     }
+
 
 }

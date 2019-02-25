@@ -22,9 +22,33 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
-            android:text="aapt"
+            android:text="aapt_remove"
             android:textSize="15sp"
             android:onClick="test_2"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:text="aapt_list"
+            android:textSize="15sp"
+            android:onClick="test_3"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:text="aapt_verion"
+            android:textSize="15sp"
+            android:onClick="test_4"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:text="gen apk"
+            android:textSize="15sp"
+            android:onClick="test_gen_apk"
             />
         <Button
             android:layout_width="match_parent"
@@ -33,6 +57,7 @@
             android:text="md5"
             android:textSize="15sp"
             android:onClick="test_md5"
+            android:visibility="gone"
             />
 
 

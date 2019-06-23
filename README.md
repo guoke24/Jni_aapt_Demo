@@ -3,7 +3,7 @@
 
 半成品，包含了使用AndroidStudio生成的头文件的jni调用，和不需要头生成文件的，具有独立jni.cpp和jni.h的jni调用。
 
-aapt在源码不改动的基础上，添加一个Agent.cpp文件，改动Android.mk文件，编译出动态库。
+aapt在源码不改动的基础上，添加一个Agent.cpp文件，改动Android.mk文件，编译出.so的动态库，放到AS的该路径：libs/armeabi。
 
 添加的Agent.cpp文件，当作 java 和 native 层的中介。Agent.cpp需要实现供java层调用的native层方法，
 其native层函数命名规则为：
